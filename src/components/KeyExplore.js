@@ -77,7 +77,6 @@ class KeyExplore extends React.Component {
         let is_comparison_col = this.state.selected_option.is_comparison_col
         let settings_key = this.state.selected_option.value
 
-        let keys = Object.keys(ss)
         let parts = []
         if ('title' in ss) {
              parts.push(`**Summary**: ${ss['title']}`)
@@ -107,7 +106,7 @@ class KeyExplore extends React.Component {
             }
 
             let code_example = []
-            if (this.state.selected_option.is_comparison_col) {
+            if (is_comparison_col) {
                 code_example.push(`settings = {`)
                 code_example.push(`    "comparison_columns": [`)
                 code_example.push(`        {`)
@@ -124,7 +123,6 @@ class KeyExplore extends React.Component {
                 code_example = code_example.join("\n")
 
             }
-            // type default enum
 
             parts.push(`**Example**: \n  \`\`\`\` \n ${code_example}  \n \`\`\`\` `)
         }
