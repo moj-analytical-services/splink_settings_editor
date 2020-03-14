@@ -1,5 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# this file is build during the github workflow from the individual jsons so should not be committed
+src/data/all_example_settings.js
+
 # dependencies
 /node_modules
 /.pnp
