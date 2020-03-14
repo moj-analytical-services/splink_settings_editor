@@ -7,6 +7,16 @@ import InfoPanel from "./components/InfoPanel"
 import Header from "./components/Header"
 import all_example_settings from "./data/all_example_settings.js"
 
+import Typography from 'typography'
+import stAnnesTheme from 'typography-theme-st-annes'
+import injectFonts from 'typography-inject-fonts'
+
+const theme = stAnnesTheme
+const typography = new Typography(theme)
+typography.injectStyles()
+injectFonts(typography)
+
+
 class App extends React.Component {
 
     state = {
