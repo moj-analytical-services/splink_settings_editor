@@ -1,24 +1,25 @@
 import React, { Component } from 'react';
 
 class SelectSettings extends Component {
-    constructor(props) {
-      super(props);
-    }
 
-    onChange(e) {
-      this.props.onChange(e)
+    renderOption(key, all_settings) {
+      let text = all_settings[key]["example_name"]
+      if (this.props.selected_option === key) {
+        return <option value={key} selected>{text}</option>
+      } else {
+        return <option value={key}>{text}</option>
+      }
     }
-
 
     render() {
 
-      let obj = this.props.all_example_settings
+      let all_settings = this.props.all_example_settings
       let keys = Object.keys(this.props.all_example_settings)
       return (
-        <div className="form-group">
-          <label htmlFor="select1" >Select a value: </label>
-          <select  onChange={this.onChange.bind(this)} className="form-control">
-            {keys.map(key => <option value={key}>{obj[key]["example_name"]}</option>)}
+        <div>
+          <label htmlFor="select1" >Select example settings: </label>
+          <select  onChange={this.props.onChange}>
+            {keys.map(key => this.renderOption(key, all_settings))}
           </select>
 
         </div>

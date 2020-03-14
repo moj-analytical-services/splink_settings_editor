@@ -1,42 +1,39 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
 import './App.css';
-
 
 import MonacoWindow from "./components/MonacoWindow"
 import SelectSettings from "./components/SelectSettings"
-
-
-
 import InfoPanel from "./components/InfoPanel"
 import all_example_settings from "./data/all_example_settings.js"
 
 class App extends React.Component {
 
-    // Want to use StaticQuery instead
-    // https://www.gatsbyjs.org/docs/static-query/
-
-
     constructor(props) {
         super(props);
-        this.state = {selection: "id_1"}
+        const initial_example_id = "id_1"
+        this.state = {option_selection: initial_example_id}
+        this.handleChange = this.handleChange.bind(this);
       }
 
-    handleChange = (event) => {
+    getTextFromId(id) {
+      let settings_dict = all_example_settings[id]["settings_dictionary"]
+      let settings_text = JSON.stringify(settings_dict, null, 4)
+      return settings_text
+    }
 
-        this.setState({selection: event.target.value})
+    handleChange = (event) => {
+        let settings_id = event.target.value
+        this.setState({option_selection: settings_id})
     }
 
     render() {
 
-    debugger;
-    let settings_dict = all_example_settings[this.state.selection].settings_dictionary
-    let settings_text = JSON.stringify(settings_dict, null, 4)
+      let editor_text = this.getTextFromId(this.state.option_selection)
 
       return <div>
-          <SelectSettings onChange={this.handleChange} all_example_settings={all_example_settings}/>
+          <SelectSettings onChange={this.handleChange} all_example_settings={all_example_settings} selected_option={this.state.option_selection}/>
           <InfoPanel select_select_id={this.state.selection} />
-          <MonacoWindow editor_contents_string={settings_text}/>
+          <MonacoWindow editor_contents_string={editor_text}/>
       </div>;
     }
   }

@@ -50,12 +50,15 @@ class MonacoWindow extends Component {
         }
       )
 
+      this.model = model
+
 
     })
   }
 
   componentDidUpdate(prevProps) {
     this.editor.setValue(this.props.editor_contents_string)
+
   }
 
   render() {
