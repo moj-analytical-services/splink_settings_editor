@@ -1,7 +1,23 @@
 {
     "settings_id": "id_2",
-    "example_name": "example 2",
+    "example_name": "Example 2: Forename/surname invesrion",
     "settings_dictionary": {
-        "link_type": "link_only"
+        "link_type": "dedupe_only",
+        "comparison_columns": [
+            {
+                "custom_name": "name_inversion_forname",
+                "custom_columns_used": ["forename", "surname"],
+                "case_expression": "CASE \nWHEN forename_l is null or forename_r is null then -1\nWHEN jaro_winkler(forename_l, forename_r) < 0.94 then 3\nWHEN jaro_winkler(forename_l, forename_r) < 0.88 then 2\nWHEN jaro_winkler(surname_l, forename_r) < 0.94 or jaro_winkler(surname_r, forename_l) < 0.94 then 1\nELSE 0\nEND ",
+                "num_levels": 4
+            },
+            {
+                "custom_name": "name_inversion_surname",
+                "custom_columns_used": ["forename", "surname"],
+                "case_expression": "CASE \nWHEN surname_l is null or surname_r is null then -1\nWHEN jaro_winkler(surname_l, surname_r) < 0.94 then 3\nWHEN jaro_winkler(surname_l, surname_r) < 0.88 then 2\nWHEN jaro_winkler(forename_l, surname_r) < 0.94 or jaro_winkler(surname_r, forename_l) < 0.94 then 1\nELSE 0\nEND ",
+                "num_levels": 4
+            },
+            {"col_name": "other_columns"}
+        ]
+
     }
 }
