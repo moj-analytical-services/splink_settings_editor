@@ -50,7 +50,7 @@ class App extends React.Component {
           <SelectSettings onChange={this.handleChange} all_example_settings={all_example_settings} selected_option={this.state.option_selection}/>
           <div className="App-flex-container">
             <div className="App-flex-item">
-              <h2>Code editor:</h2>
+              <h2>Code editor</h2>
             <MonacoWindow editor_contents_string={editor_text}  option_selection={this.state.option_selection}/>
             </div>
             <div className="App-flex-item">

@@ -12,10 +12,21 @@ const EditorContainer = (props) => {
 };
 
 const ErrorContainer = (props) => {
-  return <div
-          id="error-container">
-            {props.errors.map(error => <div>{error}</div>)}
-          </div>
+  if (props.errors.length === 0) {
+    return (
+      <div  style={{background: "#bcfbb8"}}>
+        The above settings object is VALID
+        </div>
+    )
+  } else {
+    return (
+    <div style={{background: "#fbb8b8"}}>
+      The above settings object contains the following errors:
+      {props.errors.map(error => <li>{error}</li>)}
+    </div>)
+  }
+
+
 };
 
 
