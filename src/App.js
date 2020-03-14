@@ -5,6 +5,8 @@ import MonacoWindow from "./components/MonacoWindow"
 import SelectSettings from "./components/SelectSettings"
 import InfoPanel from "./components/InfoPanel"
 import Header from "./components/Header"
+import KeyExplore from "./components/KeyExplore"
+
 import all_example_settings from "./data/all_example_settings.js"
 
 import Typography from 'typography'
@@ -58,6 +60,7 @@ class App extends React.Component {
             <InfoPanel select_id={this.state.option_selection} />
             </div>
           </div>
+          <KeyExplore/>
       </div>;
     }
   }
