@@ -3,16 +3,31 @@ import * as monaco from 'monaco-editor'
 
 
 
-export const EditorContainer = (props) => {
+const EditorContainer = (props) => {
   return <div
           id="editor-container"
-          style={{
-            width: props.width ? props.width : "500px",
-            height: props.height ? props.height : "500px",
+          style={{width:"700px"
+
           }}></div>
 };
 
+const ErrorContainer = (props) => {
+  return <div
+          id="error-container">
+            {props.errors.map(error => <div>{error}</div>)}
+          </div>
+};
+
+
+
 class MonacoWindow extends React.Component {
+
+  state = {
+    "errors": []
+  }
+
+
+
   componentDidMount() {
     let url =
       "https://raw.githubusercontent.com/moj-analytical-services/splink/master/splink/files/settings_jsonschema.json"
@@ -44,27 +59,84 @@ class MonacoWindow extends React.Component {
         document.getElementById("editor-container"),
         {
           value: text_value,
+          automaticLayout: false,
           language: "json",
-          model: model
+          model: model,
+          scrollbar: {
+            vertical: "hidden",
+            handleMouseWheel: false
+          },
+          scrollBeyondLastLine: false,
+          minimap: {
+            enabled: false
+          },
+          theme:"vs-dark",
+          insertSpaces: true
         }
       )
 
       this.model = model
+
+      this.editor.onDidChangeModelDecorations(() => {
+
+        const model = this.editor.getModel();
+        this.updateEditorHeight()
+
+        const owner = model.getModeId();
+        const markers = monaco.editor.getModelMarkers({ owner });
+
+
+        let errors = []
+        markers.forEach(d => {
+          let mes = d.message
+          let line = d.startLineNumber
+           mes = `Error: ${mes} at line ${line}`
+          errors.push(mes)
+        })
+
+        this.setState({"errors": errors})
+
+      });
 
 
     })
   }
 
   componentDidUpdate(prevProps) {
-    this.editor.setValue(this.props.editor_contents_string)
+    if (prevProps.option_selection !== this.props.option_selection) {
+      this.editor.setValue(this.props.editor_contents_string)
+    }
 
+  }
+
+  prevHeight = 0
+
+  updateEditorHeight = () => {
+    const editorElement = this.editor.getDomNode()
+
+    if (!editorElement) {
+      return
+    }
+
+    const lineHeight = this.editor.getOption(monaco.editor.EditorOption.lineHeight)
+    const lineCount = this.editor.getModel()?.getLineCount() || 1
+    const height = this.editor.getTopForLineNumber(lineCount + 1) + lineHeight
+
+    if (this.prevHeight !== height) {
+      this.prevHeight = height
+      editorElement.style.height = `${height}px`
+      this.editor.layout()
+    }
   }
 
   render() {
     return (
-      <span>
+      <div>
+        <p>You can use ctrl+space to autocomplete fields, and ctrl+shift+f to format the document</p>
+	      <p>Hover over fields to get a description of their purpose</p>
         <EditorContainer className="monaco-window" />
-      </span>
+        <ErrorContainer errors={this.state.errors}/>
+      </div>
     )
   }
 }

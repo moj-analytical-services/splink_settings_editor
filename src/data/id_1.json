@@ -1,11 +1,34 @@
 {
     "settings_id": "id_1",
-    "example_name": "Example 1",
+    "example_name": "Example 1: Basic dedupe template",
     "settings_dictionary": {
         "link_type": "dedupe_only",
-        "max_iterations": 2,
-        "comparison_columns": {
-            "col_name": "first_name"
-        }
+        "blocking_rules": [
+            "l.first_name = r.first_name",
+            "l.surname = r.surname",
+            "l.dob = r.dob"
+        ],
+        "comparison_columns": [
+            {
+                "col_name": "first_name",
+                "num_levels": 3,
+                "term_frequency_adjustments": true
+            },
+            {
+                "col_name": "surname",
+                "num_levels": 3,
+                "term_frequency_adjustments": true
+            },
+            {
+                "col_name": "dob"
+            },
+            {
+                "col_name": "city"
+            },
+            {
+                "col_name": "email"
+            }
+        ],
+        "additional_columns_to_retain": ["group"]
     }
 }

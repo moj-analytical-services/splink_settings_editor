@@ -41,8 +41,11 @@ class InfoPanel extends React.Component {
 
     render() {
       return <div>
+
         <ReactMarkdown source={this.state.md}/>
-        {this.props.select_id}</div>;
+        <p>Notes:</p>
+        <p>Where the user does not explicitly provide settings, splink will fall back on sensible default values.</p>
+        </div>;
     }
 
     _loadAsyncData(id) {

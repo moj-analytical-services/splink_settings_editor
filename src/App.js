@@ -4,6 +4,7 @@ import './App.css';
 import MonacoWindow from "./components/MonacoWindow"
 import SelectSettings from "./components/SelectSettings"
 import InfoPanel from "./components/InfoPanel"
+import Header from "./components/Header"
 import all_example_settings from "./data/all_example_settings.js"
 
 class App extends React.Component {
@@ -33,10 +34,19 @@ class App extends React.Component {
 
       let editor_text = this.getTextFromId(this.state.option_selection)
 
-      return <div>
+      return <div className="App-main-div">
+          <Header/>
+
           <SelectSettings onChange={this.handleChange} all_example_settings={all_example_settings} selected_option={this.state.option_selection}/>
-          <InfoPanel select_id={this.state.option_selection} />
-          <MonacoWindow editor_contents_string={editor_text}/>
+          <div className="App-flex-container">
+            <div className="App-flex-item">
+              <h2>Code editor:</h2>
+            <MonacoWindow editor_contents_string={editor_text}  option_selection={this.state.option_selection}/>
+            </div>
+            <div className="App-flex-item">
+            <InfoPanel select_id={this.state.option_selection} />
+            </div>
+          </div>
       </div>;
     }
   }
