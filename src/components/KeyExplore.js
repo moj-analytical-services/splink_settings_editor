@@ -8,7 +8,7 @@ class KeyExplore extends React.Component {
 
     state = {
         schema: null,
-        selected_option: {}
+        selected_option: null
     }
 
 
@@ -20,7 +20,7 @@ class KeyExplore extends React.Component {
 
         p1.then(data => {
             this.schema = data
-            this.setState({ selected_option: { value: 'link_type', label: 'link_type',  is_comparison_col: false} })
+            this.setState({ selected_option:null })
         }
 
         )
@@ -134,10 +134,17 @@ class KeyExplore extends React.Component {
     render() {
 
         let options = this.schemaToOptions()
-        let schemaSection = this.optionToSchemaSection()
-        let md = this.markdownFromSchemaSection(schemaSection)
+        let md = ""
+        if (this.state.selected_option) {
+            let schemaSection = this.optionToSchemaSection()
+            md = this.markdownFromSchemaSection(schemaSection)
+        }
+
+
+
 
         return <div><h2>Setting dictionary key explorer</h2>
+            <p>Select a key from the box below for further details about what it does</p>
             <Select options={options} value={this.state.selected_option} onChange={this.handleChange} />
             <br/>
             <ReactMarkdown source={md}/>

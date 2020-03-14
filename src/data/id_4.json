@@ -1,0 +1,25 @@
+{
+    "settings_id": "id_4",
+    "example_name": "Example 4: Manually computing match probabilities with no iterations",
+    "settings_dictionary": {
+        "link_type": "dedupe_only",
+        "proportion_of_matches": 0.2,
+        "blocking_rules": [
+            "l.surname = r.surname"
+        ],
+        "max_iterations": 0,
+        "comparison_columns": [
+            {
+                "col_name": "first_name",
+                "num_levels": 2,
+                "m_probabilities": [0.05, 0.2, 0.75],
+                "u_probabilities": [0.9, 0.08, 0.02]
+            },
+            {
+                "col_name": "social_security_number",
+                "m_probabilities": [0.02, 0.98],
+                "u_probabilities": [0.99, 0.01]
+            }
+        ]
+    }
+}

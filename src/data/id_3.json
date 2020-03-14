@@ -1,0 +1,24 @@
+{
+    "settings_id": "id_3",
+    "example_name": "Example 3: Starting parameters",
+    "settings_dictionary": {
+        "link_type": "dedupe_only",
+        "proportion_of_matches": 0.2,
+        "blocking_rules": [
+            "l.surname = r.surname"
+        ],
+        "comparison_columns": [
+            {
+                "col_name": "first_name",
+                "num_levels": 3,
+                "m_probabilities": [0.05, 0.2, 0.75],
+                "u_probabilities": [0.9, 0.08, 0.02]
+            },
+            {
+                "col_name": "social_security_number",
+                "m_probabilities": [0.02, 0.98],
+                "u_probabilities": [0.99, 0.01]
+            }
+        ]
+    }
+}

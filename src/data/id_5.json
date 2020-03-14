@@ -1,0 +1,20 @@
+{
+    "settings_id": "id_5",
+    "example_name": "Example 5: Controlling convergence and the number of iterations",
+    "settings_dictionary": {
+        "link_type": "dedupe_only",
+        "blocking_rules": [
+            "l.surname = r.surname"
+        ],
+        "max_iterations": 100,
+        "em_convergence": 0.0001,
+        "comparison_columns": [
+            {
+                "col_name": "first_name"
+            },
+            {
+                "col_name": "surname"
+            }
+        ]
+    }
+}
