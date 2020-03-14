@@ -4,11 +4,7 @@ class SelectSettings extends Component {
 
     renderOption(key, all_settings) {
       let text = all_settings[key]["example_name"]
-      if (this.props.selected_option === key) {
-        return <option value={key} selected>{text}</option>
-      } else {
-        return <option value={key}>{text}</option>
-      }
+      return <option key={key} value={key}>{text}</option>
     }
 
     render() {
@@ -18,7 +14,7 @@ class SelectSettings extends Component {
       return (
         <div>
           <label htmlFor="select1" >Select example settings: </label>
-          <select  onChange={this.props.onChange}>
+          <select  onChange={this.props.onChange} defaultValue={this.props.selected_option}>
             {keys.map(key => this.renderOption(key, all_settings))}
           </select>
 

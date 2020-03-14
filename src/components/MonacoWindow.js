@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import * as monaco from 'monaco-editor'
 
 
@@ -12,17 +12,16 @@ export const EditorContainer = (props) => {
           }}></div>
 };
 
-class MonacoWindow extends Component {
+class MonacoWindow extends React.Component {
   componentDidMount() {
     let url =
-      "https://raw.githubusercontent.com/moj-analytical-services/splink/dev/splink/files/settings_jsonschema.json"
+      "https://raw.githubusercontent.com/moj-analytical-services/splink/master/splink/files/settings_jsonschema.json"
 
-    let p1 = import("monaco-editor")
-    let p2 = fetch(url).then(res => res.json())
+    let p1 = fetch(url).then(res => res.json())
 
-    Promise.all([p1, p2]).then(data => {
-      let monaco = data[0]
-      let my_schema = data[1]
+    p1.then(data => {
+
+      let my_schema = data
       let text_value = this.props.editor_contents_string
 
       this.monaco = monaco
