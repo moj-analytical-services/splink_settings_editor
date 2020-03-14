@@ -36,7 +36,8 @@ class App extends React.Component {
     }
 
     handleChange = (event) => {
-        let settings_id = event.target.value
+
+        let settings_id = event.value
         this.setState({option_selection: settings_id})
     }
 

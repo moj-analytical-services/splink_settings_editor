@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Select from 'react-select';
 
 class SelectSettings extends Component {
 
@@ -11,13 +12,13 @@ class SelectSettings extends Component {
 
       let all_settings = this.props.all_example_settings
       let keys = Object.keys(this.props.all_example_settings)
+      let options = keys.map(k => { return {value: k, label: all_settings[k]["example_name"] }})
+
+      let k = this.props.selected_option
+      let value = {value: k, label: all_settings[k]["example_name"]}
       return (
         <div>
-
-          <select  onChange={this.props.onChange} defaultValue={this.props.selected_option}>
-            {keys.map(key => this.renderOption(key, all_settings))}
-          </select>
-
+          <Select options={options}  onChange={this.props.onChange} value={value}/>
         </div>
       )
     }
