@@ -32,7 +32,7 @@ class App extends React.Component {
 
       return <div>
           <SelectSettings onChange={this.handleChange} all_example_settings={all_example_settings} selected_option={this.state.option_selection}/>
-          <InfoPanel select_select_id={this.state.selection} />
+          <InfoPanel select_id={this.state.option_selection} />
           <MonacoWindow editor_contents_string={editor_text}/>
       </div>;
     }
