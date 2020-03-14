@@ -8,12 +8,15 @@ import all_example_settings from "./data/all_example_settings.js"
 
 class App extends React.Component {
 
+    state = {
+      option_selection: "id_1"
+    }
+
     constructor(props) {
         super(props);
-        const initial_example_id = "id_1"
-        this.state = {option_selection: initial_example_id}
         this.handleChange = this.handleChange.bind(this);
-      }
+    }
+
 
     getTextFromId(id) {
       let settings_dict = all_example_settings[id]["settings_dictionary"]

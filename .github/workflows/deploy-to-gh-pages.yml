@@ -12,6 +12,7 @@ jobs:
 
     - name: Build
       run: |
+        python scripts/combine_settings.py
         npm install
         npm run-script build
 

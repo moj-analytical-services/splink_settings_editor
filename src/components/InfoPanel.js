@@ -8,6 +8,8 @@ class InfoPanel extends React.Component {
   }
 
 
+  // This is a way of fetching data asyncronously when props change
+  // see https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#fetching-external-data-when-props-change
   static getDerivedStateFromProps(props, state) {
 
     if (props.select_id !== state.prev_select_id) {
@@ -38,11 +40,6 @@ class InfoPanel extends React.Component {
     }
 
     render() {
-
-      console.log("rendering")
-      console.log(this.state.md)
-
-
       return <div>
         <ReactMarkdown source={this.state.md}/>
         {this.props.select_id}</div>;
