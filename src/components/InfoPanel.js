@@ -44,8 +44,6 @@ class InfoPanel extends React.Component {
       return <div>
         <h2>{all_example_settings[this.props.select_id]["example_name"]}</h2>
         <ReactMarkdown source={this.state.md}/>
-        <p>Notes:</p>
-        <p>Where the user does not explicitly provide settings, splink will fall back on sensible default values.</p>
         </div>;
     }
 
