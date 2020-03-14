@@ -13,7 +13,7 @@ class SelectSettings extends Component {
       let keys = Object.keys(this.props.all_example_settings)
       return (
         <div>
-          <label htmlFor="select1" >Select example settings: </label>
+
           <select  onChange={this.props.onChange} defaultValue={this.props.selected_option}>
             {keys.map(key => this.renderOption(key, all_settings))}
           </select>
