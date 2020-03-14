@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown'
+import all_example_settings from "../data/all_example_settings.js"
 
 class InfoPanel extends React.Component {
 
@@ -41,7 +42,7 @@ class InfoPanel extends React.Component {
 
     render() {
       return <div>
-
+        <h2>{all_example_settings[this.props.select_id]["example_name"]}</h2>
         <ReactMarkdown source={this.state.md}/>
         <p>Notes:</p>
         <p>Where the user does not explicitly provide settings, splink will fall back on sensible default values.</p>

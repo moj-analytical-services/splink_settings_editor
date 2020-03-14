@@ -1,5 +1,3 @@
-## Example 1:  Simple deduplication example
-
 This is the settings dictionary used in the [quickstart_demo_deduplications.ipynb](https://mybinder.org/v2/gh/moj-analytical-services/splink_demos/master?urlpath=lab/tree/quickstart_demo_deduplications.ipynb) notebook.
 
 In words, this setting dictionary says:
