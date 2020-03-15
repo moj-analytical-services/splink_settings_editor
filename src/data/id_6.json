@@ -1,0 +1,39 @@
+{
+    "settings_id": "id_6",
+    "example_name": "Example 6:  dedupe template using custom string comparator functions",
+    "settings_dictionary": {
+        "link_type": "dedupe_only",
+        "blocking_rules": [
+            "l.first_name = r.first_name",
+            "l.surname = r.surname",
+        
+        ],
+        "comparison_columns": [
+            {
+                "col_name": "first_name",
+                "num_levels": 3,
+                "term_frequency_adjustments": true
+            },
+            {
+                "col_name": "surname",
+                "num_levels": 3,
+                "term_frequency_adjustments": true
+            }
+
+
+            {
+
+
+            "col_name": "fulladdress",
+            "num_levels": 3,
+            "case_expression": "case when fulladdress_l is null or fulladdress_r is null then -1 when (1- cosine_distance(QgramTokeniser(fulladdress_l), QgramTokeniser(fulladdress_r))) > 0.94 then 2 when (1-cosine_distance(QgramTokeniser(fulladdress_l), QgramTokeniser(fulladdress_r))) > 0.87 then 1 else 0 end  as gamma_fulladdress"
+
+
+            }
+
+
+
+        ],
+        "additional_columns_to_retain": ["group"]
+    }
+}
