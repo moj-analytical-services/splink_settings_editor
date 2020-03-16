@@ -1,0 +1,18 @@
+{
+    "settings_id": "id_8",
+    "example_name": "Example 8: Numeric variables",
+    "settings_dictionary": {
+        "link_type": "dedupe_only",
+        "retain_matching_columns": true,
+        "retain_intermediate_calculation_columns": true,
+        "comparison_columns": [
+            {
+                "col_name": "first_name"
+            },
+            {
+                "col_name": "income_gbp",
+                "data_type": "numeric"
+            }
+        ]
+    }
+}
