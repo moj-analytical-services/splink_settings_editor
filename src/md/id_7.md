@@ -13,7 +13,7 @@ By default, `splink` therefore includes a variety of additional columns in its r
 
 - `retain_matching_columns`: If set to true, the original data is retained in the output.  For instance, if `first_name` is a comparison column, the values of `first_name_l` and `first_name_r` will be retainined in the results.
 
-- `retain_intermediate_calculation_columns`:  If set to true, additional intermediate columns are included in the calculation representing the various probabilities computed for each individual column.
+- `retain_intermediate_calculation_columns`:  If set to true, additional intermediate columns are included in the calculation representing the various `m` and `u` probabilities computed for each individual column.
 
 In addition, the user can ask to retain addition columns which are not being used as part of data linking using the `additional_columns_to_retain` setting.  The The most common example of where this is useful is where the user has labelled data (i.e. a training set), and wants to include the labels in the results.
 
