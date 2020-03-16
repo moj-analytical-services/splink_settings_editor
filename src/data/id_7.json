@@ -1,0 +1,21 @@
+{
+    "settings_id": "id_7",
+    "example_name": "Example 7: Controlling which columns appear in your outputs",
+    "settings_dictionary": {
+        "link_type": "dedupe_only",
+        "retain_matching_columns": true,
+        "retain_intermediate_calculation_columns": true,
+        "comparison_columns": [
+            {
+                "col_name": "first_name",
+                "term_frequency_adjustments": true
+            },
+            {
+                "col_name": "surname"
+            }
+        ],
+        "additional_columns_to_retain": [
+            "label"
+        ]
+    }
+}
