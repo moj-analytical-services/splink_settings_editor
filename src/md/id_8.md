@@ -22,6 +22,7 @@ And example is as follows for a user who want a case expression that has the fol
 
 
 ```python
+# python/splink code
 from splink.case_statements import sql_gen_case_stmt_numeric_perc_3
 
 case_expr = sql_gen_case_stmt_numeric_perc_3("income_gbp", per_diff = 0.05)
