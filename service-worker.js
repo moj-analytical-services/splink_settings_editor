@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/splink_settings_editor/precache-manifest.8e345f2ab5280eb58c961a76807b227b.js"
+  "/splink_settings_editor/precache-manifest.3e05ef1347b8b84fa604297d38c58a1c.js"
 );
 
 self.addEventListener('message', (event) => {
