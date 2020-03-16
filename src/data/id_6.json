@@ -1,6 +1,6 @@
 {
     "settings_id": "id_6",
-    "example_name": "Example 5: Custom comparison on a single column",
+    "example_name": "Example 6: Custom comparison on a single column",
     "settings_dictionary": {  "link_type": "dedupe_only",
         "comparison_columns": [
                 {
@@ -13,14 +13,14 @@
                     "num_levels": 3,
                     "term_frequency_adjustments": true
                 },
-    
+
                 {
-    
+
                     "col_name": "fulladdress",
                     "num_levels": 3,
                     "case_expression": "case when fulladdress_l is null or fulladdress_r is null then -1 when (1- cosine_distance(QgramTokeniser(fulladdress_l), QgramTokeniser(fulladdress_r))) > 0.84 then 2 when (1-cosine_distance(QgramTokeniser(fulladdress_l), QgramTokeniser(fulladdress_r))) > 0.70 then 1 else 0 end  as gamma_fulladdress"
                 }
-                
+
             ]
         }
 }

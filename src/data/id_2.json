@@ -1,6 +1,6 @@
 {
     "settings_id": "id_2",
-    "example_name": "Example 2: Forename/surname invesrion",
+    "example_name": "Example 2: Forename/surname inversion",
     "settings_dictionary": {
         "link_type": "dedupe_only",
         "comparison_columns": [

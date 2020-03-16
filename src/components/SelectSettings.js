@@ -12,7 +12,10 @@ class SelectSettings extends Component {
 
       let all_settings = this.props.all_example_settings
       let keys = Object.keys(this.props.all_example_settings)
+      keys.sort()
+
       let options = keys.map(k => { return {value: k, label: all_settings[k]["example_name"] }})
+
 
       let k = this.props.selected_option
       let value = {value: k, label: all_settings[k]["example_name"]}
